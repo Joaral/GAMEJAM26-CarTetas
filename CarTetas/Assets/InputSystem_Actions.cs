@@ -118,6 +118,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""f0cd9a19-4aa9-4599-b5ac-4f778728bd27"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -151,6 +160,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Job"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80e1139c-6121-4a1e-8fdb-938935f52284"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Next"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -741,6 +761,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Love = m_Player.FindAction("Love", throwIfNotFound: true);
         m_Player_Dead = m_Player.FindAction("Dead", throwIfNotFound: true);
         m_Player_Job = m_Player.FindAction("Job", throwIfNotFound: true);
+        m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -837,6 +858,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Love;
     private readonly InputAction m_Player_Dead;
     private readonly InputAction m_Player_Job;
+    private readonly InputAction m_Player_Next;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -860,6 +882,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Job".
         /// </summary>
         public InputAction @Job => m_Wrapper.m_Player_Job;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Next".
+        /// </summary>
+        public InputAction @Next => m_Wrapper.m_Player_Next;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -895,6 +921,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Job.started += instance.OnJob;
             @Job.performed += instance.OnJob;
             @Job.canceled += instance.OnJob;
+            @Next.started += instance.OnNext;
+            @Next.performed += instance.OnNext;
+            @Next.canceled += instance.OnNext;
         }
 
         /// <summary>
@@ -915,6 +944,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Job.started -= instance.OnJob;
             @Job.performed -= instance.OnJob;
             @Job.canceled -= instance.OnJob;
+            @Next.started -= instance.OnNext;
+            @Next.performed -= instance.OnNext;
+            @Next.canceled -= instance.OnNext;
         }
 
         /// <summary>
@@ -1236,6 +1268,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJob(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Next" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNext(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

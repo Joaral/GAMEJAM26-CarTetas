@@ -4,8 +4,9 @@ using UnityEngine.InputSystem;
 
 public class cardsHandler : MonoBehaviour
 {
+    public GameManager gameManager;
     public List<GameObject> cards;
-    GameObject currentCard;
+    public GameObject currentCard;
     public bool isCardAlive;
     public bool canSpawn;
     //public Timer timer;
@@ -43,14 +44,21 @@ public class cardsHandler : MonoBehaviour
             currentCard = Instantiate(cards[cardIndex], spawnPoint.position, spawnPoint.rotation);
             isCardAlive = true;
             canSpawn = false;
+            gameManager.Object = currentCard;
         }
 
 
-        if (input.Player.Attack.IsPressed())
+        if (input.Player.Next.IsPressed())
         {
-            Destroy(currentCard);
-            currentCard = null;
-            isCardAlive = false;
+            if (!isCardAlive)
+            {
+                Destroy(currentCard);
+                currentCard = null;
+            }
+            else
+            {
+                Debug.Log("Pendejo");
+            }
 
         }
         
