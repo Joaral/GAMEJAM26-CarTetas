@@ -1,14 +1,24 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public InputSystem_Actions input;
     public cardsHandler cardsHandler;
-    public GameObject Object;
-    public Vector3 newPosition;
+
+    public GameObject currentCard;
+    public TextMeshProUGUI textMeshPro;
+    public int score = 0;
+    public bool gameOver;
+    public GameObject scorePanel;
+    public TextMeshProUGUI finalScoreText;
+    public bool isPaused;
+    public GameObject pausePanel;
+
     public GameObject AreaLove;
     public GameObject AreaDead;
     public GameObject AreaJob;
+
     void Start()
     {
         input = new InputSystem_Actions();
@@ -17,49 +27,75 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-       
-        if (input.Player.Love.IsPressed())
+        if (input.Player.Pause.WasPressedThisFrame())
         {
-            newPosition = new Vector3(AreaLove.transform.position.x, AreaLove.transform.position.y, AreaLove.transform.position.z);
-            Object.transform.position = newPosition;
-            cardsHandler.isCardAlive = false;
-            if (Object.tag == AreaLove.tag)
-            {
-                Debug.Log("TETAS");
-            }
-            else
-            {
-                Debug.Log("NO TETAS");
-            }
+            TogglePause();
+        }
 
-        }
-        if (input.Player.Dead.IsPressed())
+        if (gameOver || isPaused) return;
+
+        if (currentCard == null) return;
+
+        if (input.Player.Love.WasPressedThisFrame())
         {
-            newPosition = new Vector3(AreaDead.transform.position.x, AreaDead.transform.position.y, AreaDead.transform.position.z);
-            Object.transform.position = newPosition;
-            cardsHandler.isCardAlive = false;
-            if (Object.tag == AreaDead.tag)
-            {
-                Debug.Log("TETAS");
-            }
-            else
-            {
-                Debug.Log("NO TETAS");
-            }
+            ResolveCard(AreaLove);
         }
-        if (input.Player.Job.IsPressed())
+
+        if (input.Player.Dead.WasPressedThisFrame())
         {
-            newPosition = new Vector3(AreaJob.transform.position.x, AreaJob.transform.position.y, AreaJob.transform.position.z);
-            Object.transform.position = newPosition;
-            cardsHandler.isCardAlive = false;
-            if (Object.tag == AreaJob.tag)
-            {
-                Debug.Log("TETAS");
-            }
-            else
-            {
-                Debug.Log("NO TETAS");
-            }
+            ResolveCard(AreaDead);
+        }
+
+        if (input.Player.Job.WasPressedThisFrame())
+        {
+            ResolveCard(AreaJob);
         }
     }
+
+    void ResolveCard(GameObject area)
+    {
+        currentCard.transform.position = area.transform.position;
+
+        if (currentCard.CompareTag(area.tag))
+        {
+            Debug.Log("CORRECTO");
+            score += 10;
+            textMeshPro.text = "Score: " + score.ToString();
+        }
+        else
+        {
+            Debug.Log("INCORRECTO");
+            score -= 5;
+            if(score < 0) score = 0;
+            textMeshPro.text = "Score: " + score.ToString();
+        }
+
+        cardsHandler.CardResolved();
+        currentCard = null;
+    }
+
+    public void SetCurrentCard(GameObject card)
+    {
+        currentCard = card;
+    }
+
+    public void EndGame()
+    {
+        gameOver = true;
+        scorePanel.SetActive(true);
+        finalScoreText.text = "Puntuacion final: " + score.ToString();
+        Debug.Log("GAME OVER");
+    }
+
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        pausePanel.SetActive(isPaused);
+
+        Time.timeScale = isPaused ? 0f : 1f;
+    }
+
+
 }
+
