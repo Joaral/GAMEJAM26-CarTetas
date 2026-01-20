@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
     const string MIXER_MUSIC = "MusicVolume";
     public void StartGame()
     {
-        SceneManager.LoadScene("MoritaScene");
+        SceneManager.LoadScene("JoanScene");
     }
 
     public void Credits()
