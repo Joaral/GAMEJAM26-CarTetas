@@ -54,7 +54,9 @@ public class GameManager : MonoBehaviour
 
     void ResolveCard(GameObject area)
     {
-        currentCard.transform.position = area.transform.position;
+        //currentCard.transform.position = area.transform.position;
+
+        cardsHandler.StartCoroutine(cardsHandler.MoveSobre(area.transform.position));
 
         if (currentCard.CompareTag(area.tag))
         {
@@ -69,7 +71,6 @@ public class GameManager : MonoBehaviour
             if(score < 0) score = 0;
             textMeshPro.text = "Score: " + score.ToString();
         }
-
         cardsHandler.CardResolved();
         currentCard = null;
     }

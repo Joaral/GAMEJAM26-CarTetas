@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +10,11 @@ public class cardsHandler : MonoBehaviour
     public List<GameObject> cards;
     public Transform spawnPoint;
     public GameObject sobre;
+    public GameObject currentSobre;
     public Animator animator;
+    public Vector3 SobreToPosition;
+
+    public float speed;
 
     public GameObject currentCard;
     public bool isCardAlive;
@@ -40,7 +46,10 @@ public class cardsHandler : MonoBehaviour
 
     void SpawnCard()
     {
-        Instantiate(sobre, new Vector3 (0, 0.3f, -3), Quaternion.Euler (0,-90,-90));
+        currentSobre = Instantiate(sobre, new Vector3 (-8, 0.3f, -3), Quaternion.Euler (0,-90,-90));
+        StartCoroutine(MoveSobre(SobreToPosition));
+
+        animator = currentSobre.GetComponent<Animator>();
         animator.SetBool("open", true);
         
         if (gameManager.gameOver) return;
@@ -54,8 +63,26 @@ public class cardsHandler : MonoBehaviour
 
     public void CardResolved()
     {
-        Destroy(sobre);
+        //StartCoroutine(MoveSobre(new Vector3(SobreToPosition.x, SobreToPosition.y, -6)));
+        //Destroy(currentSobre);
+
+        animator = currentSobre.GetComponent<Animator>();
         animator.SetBool("open", false);
+        Destroy(gameManager.currentCard);
         isCardAlive = false;
     }
+
+    public IEnumerator MoveSobre(Vector3 target)
+    {
+        float time = 0f;
+        Vector3 startPos = currentSobre.transform.position;
+
+        while (time < 1f)
+        {
+            time += Time.deltaTime * speed;
+            currentSobre.transform.position = Vector3.Lerp(startPos, target, time);
+            yield return null;
+        }
+    }
+
 }

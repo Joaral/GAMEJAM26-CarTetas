@@ -428,7 +428,7 @@ Transform:
   m_GameObject: {fileID: 281533090}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.5}
   m_LocalScale: {x: 3, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -453,7 +453,10 @@ MonoBehaviour:
   - {fileID: 390007925626392461, guid: abde556e2a3fbd64bb17fd4fcd87526e, type: 3}
   spawnPoint: {fileID: 281533093}
   sobre: {fileID: 5015721247837365214, guid: e2ed8248c6a0e2d4d9762443c15ca14d, type: 3}
+  currentSobre: {fileID: 0}
   animator: {fileID: 803511148}
+  SobreToPosition: {x: 0, y: 0.3, z: -2.5}
+  speed: 5
   currentCard: {fileID: 0}
   isCardAlive: 0
 --- !u!1 &311513483
@@ -631,7 +634,7 @@ Transform:
   m_GameObject: {fileID: 406242990}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.9, y: 1, z: -0.33}
+  m_LocalPosition: {x: 6.9, y: 0.3, z: -0.33}
   m_LocalScale: {x: 3, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -814,7 +817,7 @@ Transform:
   m_GameObject: {fileID: 476555339}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.9, y: 1, z: -3.3}
+  m_LocalPosition: {x: 6.9, y: 0.3, z: -3.3}
   m_LocalScale: {x: 3, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1823,7 +1826,7 @@ Transform:
   m_GameObject: {fileID: 1095017257}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.9, y: 1, z: 2.51}
+  m_LocalPosition: {x: 6.9, y: 0.3, z: 2.51}
   m_LocalScale: {x: 3, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
