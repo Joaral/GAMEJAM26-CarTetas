@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public GameObject AreaLove;
     public GameObject AreaDead;
     public GameObject AreaJob;
+    public ListHandler listHandler;
+
 
     void Start()
     {
@@ -78,6 +80,7 @@ public class GameManager : MonoBehaviour
     public void SetCurrentCard(GameObject card)
     {
         currentCard = card;
+        listHandler.SetTextByCard(card);
     }
 
     public void EndGame()

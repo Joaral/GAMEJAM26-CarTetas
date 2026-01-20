@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 281533092}
   - component: {fileID: 281533091}
   - component: {fileID: 281533094}
+  - component: {fileID: 281533095}
   m_Layer: 0
   m_Name: SpawnerCarta
   m_TagString: Untagged
@@ -406,6 +407,7 @@ MonoBehaviour:
   AreaLove: {fileID: 1095017257}
   AreaDead: {fileID: 476555339}
   AreaJob: {fileID: 406242990}
+  listHandler: {fileID: 281533095}
 --- !u!114 &281533092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +461,28 @@ MonoBehaviour:
   speed: 5
   currentCard: {fileID: 0}
   isCardAlive: 0
+--- !u!114 &281533095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281533090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7167e6727b3abce408767f49b540b9c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  textsBonitos:
+  - hola bonito
+  - hola bonito 2
+  textsFeitos:
+  - hola feito
+  - hola feito 2
+  textsTrabajo:
+  - hola trabajo
+  - hola trabajo 2
 --- !u!1 &311513483
 GameObject:
   m_ObjectHideFlags: 0

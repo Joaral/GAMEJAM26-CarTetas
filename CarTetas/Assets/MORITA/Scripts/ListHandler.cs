@@ -76,121 +76,51 @@
 //    }
 
 //}
-
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class ListHandler : MonoBehaviour
 {
-    [Header("UI")]
-    public TextMeshProUGUI text;
+    public List<string> textsBonitos;
+    public List<string> textsFeitos;
+    public List<string> textsTrabajo;
 
-    [Header("Prefabs")]
-    public GameObject cartaAmorPrefab;     // Tag: Love
-    public GameObject cartaOdioPrefab;     // Tag: Dead
-    public GameObject cartaTrabajoPrefab;  // Tag: Job
-
-    [Header("Spawn")]
-    public Transform spawnPoint;
-
-    InputSystem_Actions input;
-
-    public List<string> textsBonitos = new List<string>()
+    public void SetTextByCard(GameObject card)
     {
-        "Pene",
-        "Polla",
-        "Pito",
-        "Payaso"
-    };
+        if (card == null) return;
 
-    public List<string> textsFeitos = new List<string>()
-    {
-        "Pene fea",
-        "Polla fea",
-        "Pito fea",
-        "Payaso fea"
-    };
+        // Buscar el TMP dentro de la carta (Canvas -> Text)
+        TextMeshProUGUI tmp = card.GetComponentInChildren<TextMeshProUGUI>();
 
-    public List<string> textsTrabajo = new List<string>()
-    {
-        "Pene trabajo",
-        "Polla trabajo",
-        "Pito trabajo",
-        "Payaso trabajo"
-    };
-
-    void Start()
-    {
-        input = new InputSystem_Actions();
-        input.Enable();
-    }
-
-    void Update()
-    {
-        if (input.Player.Love.WasPressedThisFrame())
+        if (tmp == null)
         {
-            InstanciarCartaYTexto();
+            Debug.LogWarning("La carta no tiene TextMeshProUGUI");
+            return;
         }
-    }
 
-    void InstanciarCartaYTexto()
-    {
-        // Elegimos un prefab random
-        GameObject prefabElegido = ElegirPrefabRandom();
+        List<string> lista = null;
 
-        // Instanciamos
-        GameObject cartaInstanciada = Instantiate(
-            prefabElegido,
-            spawnPoint.position,
-            prefabElegido.transform.rotation
-        );
-
-        // Elegimos texto según el tag
-        string textoFinal = ObtenerTextoPorTag(cartaInstanciada.tag);
-
-        // Cambiamos el TMP
-        text.text = textoFinal;
-    }
-
-    GameObject ElegirPrefabRandom()
-    {
-        int rnd = Random.Range(0, 3);
-
-        switch (rnd)
-        {
-            case 0:
-                return cartaAmorPrefab;
-            case 1:
-                return cartaOdioPrefab;
-            default:
-                return cartaTrabajoPrefab;
-        }
-    }
-
-    string ObtenerTextoPorTag(string tag)
-    {
-        List<string> listaSeleccionada = null;
-
-        switch (tag)
+        switch (card.tag)
         {
             case "Love":
-                listaSeleccionada = textsBonitos;
+                lista = textsBonitos;
                 break;
 
             case "Dead":
-                listaSeleccionada = textsFeitos;
+                lista = textsFeitos;
                 break;
 
             case "Job":
-                listaSeleccionada = textsTrabajo;
+                lista = textsTrabajo;
                 break;
         }
 
-        if (listaSeleccionada == null || listaSeleccionada.Count == 0)
-            return "";
+        if (lista == null || lista.Count == 0) return;
 
-        return listaSeleccionada[Random.Range(0, listaSeleccionada.Count)];
+        tmp.text = lista[Random.Range(0, lista.Count)];
     }
 }
+
+
 
