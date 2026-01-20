@@ -52,6 +52,10 @@ public class GameManager : MonoBehaviour
         {
             ResolveCard(AreaJob);
         }
+        if (input.Player.Flip.WasPressedThisFrame())
+        {
+            FlipCard();
+        }
     }
 
     void ResolveCard(GameObject area)
@@ -99,6 +103,16 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = isPaused ? 0f : 1f;
     }
+
+    public void FlipCard()
+    {
+        if (currentCard == null) return;
+
+        Vector3 euler = currentCard.transform.eulerAngles;
+        euler.z += 180f;
+        currentCard.transform.eulerAngles = euler;
+    }
+
 
 
 }
