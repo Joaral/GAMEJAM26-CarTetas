@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &237877341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 237877342}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &237877342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237877341}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &383953102
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +891,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1541636292}
-  randNumn: 0
+  cartaAmorPrefab: {fileID: 4490117595625319001, guid: c2663126c288d3941996dbaf2b56dd44, type: 3}
+  cartaOdioPrefab: {fileID: 8611503755011720381, guid: e104aca928a4958418f57e8ff0324a16, type: 3}
+  cartaTrabajoPrefab: {fileID: 7939971163023412271, guid: 30698d3575a43f24696b8748d7f109a5, type: 3}
+  spawnPoint: {fileID: 237877342}
   textsBonitos:
   - Pene
   - Polla
@@ -884,3 +918,4 @@ SceneRoots:
   - {fileID: 771998812}
   - {fileID: 1350819758}
   - {fileID: 1509175665}
+  - {fileID: 237877342}
