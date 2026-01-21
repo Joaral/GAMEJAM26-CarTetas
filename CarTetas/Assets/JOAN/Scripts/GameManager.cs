@@ -5,6 +5,12 @@ public class GameManager : MonoBehaviour
 {
     public InputSystem_Actions input;
     public cardsHandler cardsHandler;
+    public Caja cajaScript;
+
+    public GameObject currentCaja;
+    public GameObject cajaAzul;
+    public GameObject cajaRosa;
+    public GameObject cajaNegra;
 
     public GameObject currentCard;
     public TextMeshProUGUI textMeshPro;
@@ -40,16 +46,26 @@ public class GameManager : MonoBehaviour
 
         if (input.Player.Love.WasPressedThisFrame())
         {
+            currentCaja = cajaRosa;
+            cajaScript = currentCaja.GetComponent<Caja>();
+            cajaRosa.SetActive(true);
             ResolveCard(AreaLove);
         }
 
         if (input.Player.Dead.WasPressedThisFrame())
         {
+            currentCaja = cajaNegra;
+            cajaScript = currentCaja.GetComponent<Caja>();
+            cajaNegra.SetActive(true);
+
             ResolveCard(AreaDead);
         }
 
         if (input.Player.Job.WasPressedThisFrame())
         {
+            currentCaja = cajaAzul;
+            cajaScript = currentCaja.GetComponent<Caja>();
+            cajaAzul.SetActive(true);
             ResolveCard(AreaJob);
         }
         if (input.Player.Flip.WasPressedThisFrame())
@@ -62,6 +78,7 @@ public class GameManager : MonoBehaviour
     {
         //currentCard.transform.position = area.transform.position;
 
+        cajaScript.isSobring = true;
         cardsHandler.StartCoroutine(cardsHandler.MoveSobre(area.transform.position));
 
         if (currentCard.CompareTag(area.tag))
