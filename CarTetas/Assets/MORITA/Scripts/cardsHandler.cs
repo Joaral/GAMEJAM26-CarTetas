@@ -14,7 +14,7 @@ public class cardsHandler : MonoBehaviour
     public Animator animator;
     public Vector3 SobreToPosition;
 
-    public float speed;
+    public float speed = 10;
 
     public GameObject currentCard;
     public bool isCardAlive;

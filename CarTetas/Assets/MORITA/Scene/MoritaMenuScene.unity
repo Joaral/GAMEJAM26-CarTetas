@@ -484,6 +484,7 @@ GameObject:
   - component: {fileID: 345678601}
   - component: {fileID: 345678600}
   - component: {fileID: 345678599}
+  - component: {fileID: 345678602}
   m_Layer: 5
   m_Name: Back (1)
   m_TagString: Untagged
@@ -604,6 +605,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345678597}
   m_CullTransparentMesh: 1
+--- !u!114 &345678602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345678597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7fbfa49a99c614696ee9d7a7020eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1799340885}
+  hoverSound: {fileID: 8300000, guid: 1d76972055ebb054d997f7704240b6fb, type: 3}
+  clickSound: {fileID: 8300000, guid: 0c90ef0eb46724745ae7796580da3fcb, type: 3}
 --- !u!1 &369332421
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1799340886}
-  hoverSound: {fileID: 8300000, guid: 16f508ae169083e4698199c591d4c4d1, type: 3}
+  hoverSound: {fileID: 8300000, guid: 1d76972055ebb054d997f7704240b6fb, type: 3}
   clickSound: {fileID: 8300000, guid: 0c90ef0eb46724745ae7796580da3fcb, type: 3}
 --- !u!1 &712441329
 GameObject:
@@ -1313,6 +1329,7 @@ GameObject:
   - component: {fileID: 1073146758}
   - component: {fileID: 1073146757}
   - component: {fileID: 1073146756}
+  - component: {fileID: 1073146759}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -1433,6 +1450,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073146754}
   m_CullTransparentMesh: 1
+--- !u!114 &1073146759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073146754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7fbfa49a99c614696ee9d7a7020eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1799340885}
+  hoverSound: {fileID: 8300000, guid: 1d76972055ebb054d997f7704240b6fb, type: 3}
+  clickSound: {fileID: 8300000, guid: 0c90ef0eb46724745ae7796580da3fcb, type: 3}
 --- !u!1 &1163442679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,7 +1731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1799340886}
-  hoverSound: {fileID: 8300000, guid: 16f508ae169083e4698199c591d4c4d1, type: 3}
+  hoverSound: {fileID: 8300000, guid: 1d76972055ebb054d997f7704240b6fb, type: 3}
   clickSound: {fileID: 8300000, guid: 0c90ef0eb46724745ae7796580da3fcb, type: 3}
 --- !u!1 &1246743006
 GameObject:
@@ -1926,7 +1958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1799340886}
-  hoverSound: {fileID: 8300000, guid: 16f508ae169083e4698199c591d4c4d1, type: 3}
+  hoverSound: {fileID: 8300000, guid: 1d76972055ebb054d997f7704240b6fb, type: 3}
   clickSound: {fileID: 8300000, guid: 0c90ef0eb46724745ae7796580da3fcb, type: 3}
 --- !u!1 &1541116267
 GameObject:
@@ -2610,7 +2642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1799340886}
-  hoverSound: {fileID: 8300000, guid: 16f508ae169083e4698199c591d4c4d1, type: 3}
+  hoverSound: {fileID: 8300000, guid: 1d76972055ebb054d997f7704240b6fb, type: 3}
   clickSound: {fileID: 8300000, guid: 0c90ef0eb46724745ae7796580da3fcb, type: 3}
 --- !u!1 &1871092197
 GameObject:

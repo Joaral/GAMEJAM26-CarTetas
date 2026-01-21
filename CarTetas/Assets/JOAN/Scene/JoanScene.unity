@@ -458,7 +458,7 @@ MonoBehaviour:
   currentSobre: {fileID: 0}
   animator: {fileID: 803511148}
   SobreToPosition: {x: 0, y: 0.3, z: -2.5}
-  speed: 5
+  speed: 10
   currentCard: {fileID: 0}
   isCardAlive: 0
 --- !u!114 &281533095
@@ -473,7 +473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7167e6727b3abce408767f49b540b9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
   textsBonitos:
   - hola bonito
   - hola bonito 2
