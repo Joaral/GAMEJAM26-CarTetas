@@ -2,20 +2,33 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class MainMenu : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject credits;
     public GameObject options;
+    public GameObject controls;
+
+    public bool controlsB = false;
 
     public Slider musicSlider;
     public AudioMixer mainMixer;
     const string PREF_MUSIC = "MusicVolume";
     const string MIXER_MUSIC = "MusicVolume";
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            controlsB = !controlsB;
+            controls.SetActive(controlsB);
+        }
+    }
     public void StartGame()
     {
-        SceneManager.LoadScene("JoanScene");
+        SceneManager.LoadScene("EmiScene");
     }
 
     public void Credits()
