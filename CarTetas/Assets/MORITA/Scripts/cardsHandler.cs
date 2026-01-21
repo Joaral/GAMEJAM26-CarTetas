@@ -46,7 +46,7 @@ public class cardsHandler : MonoBehaviour
 
     void SpawnCard()
     {
-        currentSobre = Instantiate(sobre, new Vector3 (-8, 0.3f, -3), Quaternion.Euler (0,-90,-90));
+        currentSobre = Instantiate(sobre, new Vector3 (-8, 0.5f, -3), Quaternion.Euler (0,-90,-90));
         StartCoroutine(MoveSobre(SobreToPosition));
 
         animator = currentSobre.GetComponent<Animator>();

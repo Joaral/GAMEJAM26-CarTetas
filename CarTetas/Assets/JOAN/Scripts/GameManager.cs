@@ -7,12 +7,14 @@ public class GameManager : MonoBehaviour
     public cardsHandler cardsHandler;
 
     public GameObject currentCard;
-    public TextMeshProUGUI textMeshPro;
+
     public int score = 0;
     public bool gameOver;
     public GameObject scorePanel;
+    public GameObject currentGamePanel;
     public TextMeshProUGUI finalScoreText;
     public bool isPaused;
+    public bool isFlipped = false;
     public GameObject pausePanel;
 
     public GameObject AreaLove;
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
         if (input.Player.Pause.WasPressedThisFrame())
         {
             TogglePause();
@@ -68,14 +71,14 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("CORRECTO");
             score += 10;
-            textMeshPro.text = "Score: " + score.ToString();
+
         }
         else
         {
             Debug.Log("INCORRECTO");
             score -= 5;
             if(score < 0) score = 0;
-            textMeshPro.text = "Score: " + score.ToString();
+
         }
         cardsHandler.CardResolved();
         currentCard = null;
@@ -90,15 +93,17 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         gameOver = true;
+        Destroy(currentCard);
+        currentGamePanel.SetActive(false);
         scorePanel.SetActive(true);
-        finalScoreText.text = "Puntuacion final: " + score.ToString();
+        finalScoreText.text = score.ToString();
         Debug.Log("GAME OVER");
     }
 
     public void TogglePause()
     {
         isPaused = !isPaused;
-
+        if (currentCard != null) currentCard.SetActive(!isPaused);
         pausePanel.SetActive(isPaused);
 
         Time.timeScale = isPaused ? 0f : 1f;
@@ -108,7 +113,11 @@ public class GameManager : MonoBehaviour
     {
         if (currentCard == null) return;
 
+        isFlipped = !isFlipped;
+
         Vector3 euler = currentCard.transform.eulerAngles;
+
+        currentCard.GetComponentInChildren<Canvas>().enabled = !isFlipped;
         euler.z += 180f;
         currentCard.transform.eulerAngles = euler;
     }
